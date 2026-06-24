@@ -67,6 +67,9 @@ logs/
 # ===== Claude Code =====
 .claude/
 .cloudignore
+.codex
+CODEX.md
+CLAUDE.md
 
 # ===== Pytest =====
 .pytest_cache/
