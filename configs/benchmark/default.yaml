@@ -1,0 +1,36 @@
+# Benchmark task type configuration
+
+task_types:
+  - domain_knowledge_qa
+  - exam_style_mcqa
+  - short_answer_qa
+  - knowledge_extraction
+  - process_planning
+  - constraint_satisfaction
+  - causal_reasoning
+  - error_diagnosis
+  - source_grounded_reasoning
+  - multimodal_image_understanding
+
+difficulty_levels:
+  - easy
+  - medium
+  - hard
+
+modalities:
+  - text
+  - image
+  - multimodal
+
+quality_dimensions:
+  - clarity
+  - completeness
+  - consistency
+  - feasibility
+  - complexity
+
+benchmark_stages:
+  - planning
+  - generation
+  - validation
+  - evaluation

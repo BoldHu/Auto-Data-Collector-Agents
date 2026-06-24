@@ -1,0 +1,49 @@
+# paths.yaml — Project path configuration
+# All paths are relative to the project root directory.
+
+raw_data:
+  text_books: text_raw_data/books
+  text_en_books: text_raw_data/en_books
+  text_baidu: text_raw_data/百度文库
+  images: imgs_raw_data/carbon_fiber_mm
+  image_metadata: imgs_raw_data/carbon_fiber_mm/carbon_fiber_corpus_5911_6000.jsonl
+  exams: exam_raw_data
+  llm_api: LLM_API
+
+interim:
+  text_cleaned: data/interim/text_cleaned
+  image_index: data/interim/image_index
+  image_dedup: data/interim/image_dedup
+  image_labeled: data/interim/image_labeled
+  exam_parsed: data/interim/exam_parsed
+
+processed:
+  pretraining_corpus: data/processed/pretraining_corpus
+  knowledge_units: data/processed/knowledge_units
+  sft_candidates: data/processed/sft_candidates
+
+benchmark:
+  items: data/benchmark/items
+  multimodal_candidates: data/benchmark_candidates/multimodal
+  reports: data/benchmark/reports
+
+sft:
+  train: data/sft/train
+  val: data/sft/val
+
+reports:
+  phase_0: reports/phase_0_audit
+  phase_1: reports/phase_1_system_design
+  phase_2: reports/phase_2_text_cleaning
+  phase_2_7: data/reports/phase_2_7_restart_cleaning
+  phase_3: reports/phase_3_image_labeling
+  phase_3_1: data/reports/phase_3_image_labeling
+  phase_4: reports/phase_4_exam_extraction
+  phase_5: reports/phase_5_benchmark_construction
+  phase_6: reports/phase_6_model_evaluation
+  paper_ready: reports/paper_ready
+
+crawler:
+  keywords_module: carbon_fiber_keywords
+  bing_downloader: bing_download
+  batch_runner: batch_carbon_fiber_crawl

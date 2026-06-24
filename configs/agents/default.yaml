@@ -1,0 +1,76 @@
+# Default agent configuration
+agents:
+  central_planner:
+    name: CentralPlanningAgent
+    framework: plan_and_execute
+    model: mimo-v2.5-pro
+    max_iterations: 20
+    context_budget: 8000
+
+  data_collection:
+    name: DataCollectionAgent
+    framework: react
+    model: mimo-v2.5-pro
+    max_iterations: 15
+    context_budget: 6000
+    tools:
+      - bing_image_crawler
+      - paper_downloader
+      - patent_searcher
+
+  data_cleaning:
+    name: DataCleaningAgent
+    framework: react
+    model: mimo-v2.5-pro
+    max_iterations: 15
+    context_budget: 6000
+    tools:
+      - pdf_parser
+      - ocr_processor
+      - text_cleaner
+      - deduplicator
+
+  data_annotation:
+    name: DataAnnotationAgent
+    framework: react
+    model: mimo-v2.5-pro
+    max_iterations: 15
+    context_budget: 6000
+    tools:
+      - label_generator
+      - sft_sample_builder
+      - knowledge_unit_extractor
+
+  quality_verification:
+    name: QualityVerificationAgent
+    framework: react
+    model: mimo-v2.5-pro
+    max_iterations: 10
+    context_budget: 4000
+    tools:
+      - clarity_scorer
+      - completeness_checker
+      - consistency_verifier
+      - duplication_detector
+
+  benchmark_generation:
+    name: BenchmarkGenerationAgent
+    framework: react
+    model: mimo-v2.5-pro
+    max_iterations: 15
+    context_budget: 6000
+    tools:
+      - question_generator
+      - answer_validator
+      - difficulty_estimator
+
+  model_evaluation:
+    name: ModelEvaluationAgent
+    framework: react
+    model: mimo-v2.5-pro
+    max_iterations: 10
+    context_budget: 4000
+    tools:
+      - baseline_runner
+      - metric_computer
+      - report_generator

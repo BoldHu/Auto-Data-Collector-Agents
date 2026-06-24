@@ -1,0 +1,38 @@
+# QLoRA v2 Configuration for Phase 8
+
+base_model: ""
+
+qlora:
+  load_in_4bit: true
+  bnb_4bit_quant_type: "nf4"
+  bnb_4bit_compute_dtype: "bfloat16"
+  bnb_4bit_use_double_quant: true
+
+lora:
+  rank: 16
+  alpha: 32
+  dropout: 0.05
+  target_modules: ["q_proj", "k_proj", "v_proj", "o_proj", "gate_proj", "up_proj", "down_proj"]
+  bias: "none"
+  task_type: "CAUSAL_LM"
+
+training:
+  learning_rate: 2.0e-4
+  batch_size: 2
+  gradient_accumulation_steps: 8
+  max_seq_length: 2048
+  num_train_epochs: 3
+  warmup_ratio: 0.03
+  weight_decay: 0.01
+  lr_scheduler_type: "cosine"
+  save_steps: 50
+  eval_steps: 50
+  logging_steps: 10
+  mixed_precision: "bf16"
+  gradient_checkpointing: true
+  seed: 42
+
+output_dir: "data/finetuning_outputs/qlora_v2"
+run_name: "cf_qlora_v2"
+
+run_training: false

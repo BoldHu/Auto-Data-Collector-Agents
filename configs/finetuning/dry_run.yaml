@@ -1,0 +1,32 @@
+# Dry Run Configuration for Phase 7
+# Tests training pipeline without actual training
+
+base_model: ""
+lora:
+  rank: 8
+  alpha: 16
+  dropout: 0.05
+  target_modules: ["q_proj", "k_proj", "v_proj", "o_proj"]
+  bias: "none"
+  task_type: "CAUSAL_LM"
+
+training:
+  learning_rate: 2.0e-4
+  batch_size: 2
+  gradient_accumulation_steps: 1
+  max_seq_length: 512
+  num_epochs: 1
+  warmup_ratio: 0.1
+  weight_decay: 0.01
+  save_steps: 10
+  eval_steps: 5
+  logging_steps: 5
+  mixed_precision: "no"
+  gradient_checkpointing: false
+  seed: 42
+
+output_dir: "data/finetuning_outputs/dry_run"
+run_name: "cf_dry_run"
+
+# Safety
+run_training: false

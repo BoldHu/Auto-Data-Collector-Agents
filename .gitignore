@@ -1,0 +1,76 @@
+# ===== API Keys & Secrets =====
+LLM_API/
+*.env
+*.key
+*api_key*
+*secret*
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+dist/
+build/
+*.egg
+.eggs/
+
+# ===== Virtual Environments =====
+venv/
+.venv/
+env/
+anaconda3/
+
+# ===== IDE =====
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ===== Jupyter =====
+.ipynb_checkpoints/
+
+# ===== OS =====
+.DS_Store
+Thumbs.db
+
+# ===== Raw Data (large, not for Git) =====
+text_raw_data/
+imgs_raw_data/
+exam_raw_data/
+
+# ===== Generated Data & Intermediate Results =====
+data/
+outputs/
+
+# ===== Reports (generated, not source code) =====
+reports/
+
+# ===== Model Files =====
+models/
+*.bin
+*.pt
+*.safetensors
+*.gguf
+models_cache/
+
+# ===== Logs =====
+*.log
+logs/
+
+# ===== Large Archives =====
+*.zip
+*.tar.gz
+*.rar
+
+# ===== Claude Code =====
+.claude/
+.cloudignore
+
+# ===== Pytest =====
+.pytest_cache/
+
+# ===== Coverage =====
+.coverage
+htmlcov/
