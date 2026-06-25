@@ -80,7 +80,7 @@ class QualityVerificationAgent(ReActAgent):
             "Verify quality of cleaned text chunks",
             func=self._verify_chunk_tool,
         )
-        self.tool_registry.register("finish", "Signal task completion")
+        self.tool_registry.register("finish", "Signal task completion", func=self._finish_tool)
 
         self._register_in_graph()
 
@@ -241,3 +241,7 @@ class QualityVerificationAgent(ReActAgent):
             return f"Verified: verdict={result.verdict.value}, avg={result.average:.2f}"
         except Exception as e:
             return f"Verification tool error: {str(e)[:100]}"
+
+    def _finish_tool(self, _: str) -> str:
+        """Mark verification task as complete."""
+        return f"TASK_COMPLETE: Quality verification finished. {self._verified_count} chunks verified."

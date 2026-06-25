@@ -77,3 +77,10 @@ CLAUDE.md
 # ===== Coverage =====
 .coverage
 htmlcov/
+
+# ===== Build / Validation Outputs =====
+build/
+audit_outputs/
+
+# ===== Manifest (generated, not source) =====
+manifests/

@@ -88,6 +88,7 @@ class DataCleaningAgent(ReActAgent):
         self.tool_registry.register(
             "finish",
             "Signal task completion",
+            func=self._finish_tool,
         )
 
         # Register agent node in DTCG
@@ -268,3 +269,7 @@ class DataCleaningAgent(ReActAgent):
             return "Cleaning failed"
         except json.JSONDecodeError:
             return f"Invalid input format: {action_input[:50]}"
+
+    def _finish_tool(self, _: str) -> str:
+        """Mark cleaning task as complete."""
+        return f"TASK_COMPLETE: Data cleaning finished. {self._cleaned_count} chunks cleaned."

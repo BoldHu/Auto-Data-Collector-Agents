@@ -246,8 +246,15 @@ def run_static_router(client, item: dict) -> AblationTrace:
 
 # ── System 6: DTCG Multi-Agent (Proposed) ─────────────────────────
 
-def run_dtcg(client, item: dict) -> AblationTrace:
-    """DTCG multi-agent: graph-based context selection."""
+def run_dtcg(client, item: dict, selector_config=None, system_type: str = "dtcg") -> AblationTrace:
+    """DTCG multi-agent: graph-based context selection.
+
+    Args:
+        client: Model client.
+        item: Benchmark item.
+        selector_config: Optional ContextSelectorConfig override for ablation variants.
+        system_type: System type label for the trace.
+    """
     from src.autodata.context_graph.graph_schema import DynamicTaskContextGraph, NodeType, EdgeType, Node, Edge
     from src.autodata.context_graph.context_selector import ContextSelector, ContextSelectorConfig
 
@@ -292,7 +299,7 @@ def run_dtcg(client, item: dict) -> AblationTrace:
     graph.add_edge(Edge.new(agent_node.node_id, task_node.node_id, EdgeType.AGENT_ASSIGNMENT))
 
     # Select context using DTCG
-    config = ContextSelectorConfig(default_token_budget=4000)
+    config = selector_config or ContextSelectorConfig(default_token_budget=4000)
     selector = ContextSelector(config)
     pkg = selector.select_context(
         graph=graph,
@@ -346,7 +353,7 @@ def run_dtcg(client, item: dict) -> AblationTrace:
     return AblationTrace(
         task_id=item.get("benchmark_id", ""),
         benchmark_id=item.get("benchmark_id", ""),
-        system_type="dtcg",
+        system_type=system_type,
         model_name=client.model_name,
         task_type=item.get("task_type", ""),
         modality=item.get("modality", "text"),

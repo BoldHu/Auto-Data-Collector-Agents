@@ -142,13 +142,32 @@ class Edge:
         edge_type: EdgeType,
         **properties,
     ) -> "Edge":
-        """Create a new edge with auto-generated ID."""
+        """Create a new edge with auto-generated ID.
+
+        Score kwargs (relevance_score, dependency_score, recency_score,
+        trust_score, redundancy_score, cost_score) are assigned to
+        dataclass fields so that ContextSelector can read them directly.
+        All other kwargs go to properties.
+        """
+        score_fields = {
+            "relevance_score", "dependency_score", "recency_score",
+            "trust_score", "redundancy_score", "cost_score",
+        }
+        edge_scores = {}
+        remaining_props = {}
+        for k, v in properties.items():
+            if k in score_fields:
+                edge_scores[k] = v
+            else:
+                remaining_props[k] = v
+
         return Edge(
             edge_id=uuid.uuid4().hex[:12],
             source_id=source_id,
             target_id=target_id,
             edge_type=edge_type,
-            properties=properties,
+            properties=remaining_props,
+            **edge_scores,
         )
 
     def compute_weight(self, current_time: Optional[float] = None) -> float:

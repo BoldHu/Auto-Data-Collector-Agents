@@ -7,9 +7,11 @@ Provides:
   - ToolRegistry: tool management for ReAct agents
   - DataCollectionAgent: data acquisition agent
   - DataCleaningAgent: text/image cleaning agent
+  - DataAnnotationAgent: data annotation agent
   - QualityVerificationAgent: independent quality critic
   - BenchmarkGenerationAgent: benchmark construction agent
   - ModelEvaluationAgent: model evaluation agent
+  - FineTuningAgent: model fine-tuning agent
   - ExamExtractionAgent: exam question extraction
   - ExamQualityAgent: exam quality verification
 """
@@ -30,9 +32,11 @@ from src.autodata.agents.react_agent import (
 )
 from src.autodata.agents.data_collection_agent import DataCollectionAgent
 from src.autodata.agents.data_cleaning_agent import DataCleaningAgent
+from src.autodata.agents.data_annotation_agent import DataAnnotationAgent
 from src.autodata.agents.quality_verification_agent import QualityVerificationAgent
 from src.autodata.agents.benchmark_generation_agent import BenchmarkGenerationAgent
 from src.autodata.agents.model_evaluation_agent import ModelEvaluationAgent
+from src.autodata.agents.finetuning_agent import FineTuningAgent
 from src.autodata.agents.exam_extraction_agent import ExamExtractionAgent
 from src.autodata.agents.exam_quality_agent import ExamQualityAgent
 
@@ -47,9 +51,11 @@ __all__ = [
     "ToolRegistry",
     "DataCollectionAgent",
     "DataCleaningAgent",
+    "DataAnnotationAgent",
     "QualityVerificationAgent",
     "BenchmarkGenerationAgent",
     "ModelEvaluationAgent",
+    "FineTuningAgent",
     "ExamExtractionAgent",
     "ExamQualityAgent",
 ]
